@@ -373,7 +373,15 @@ async def health_check():
     }
 
 
-if __name__ == "__main__":
-    import uvicorn
+# if __name__ == "__main__":
+#     import uvicorn
 
-    uvicorn.run("app:app", host="0.0.0.0", port=5005, reload=True)
+#     uvicorn.run("app:app", host="0.0.0.0", port=5005, reload=True)
+
+
+import os
+import uvicorn
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Railway dynamic port
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=True)
